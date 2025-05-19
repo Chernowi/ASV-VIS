@@ -1,9 +1,7 @@
-streamlit 
-numpy 
-torch 
-scipy 
-pydantic 
-matplotlib 
-imageio 
-imageio-ffmpeg 
+streamlit
+pandas
+numpy
+torch==1.13.1+cpu
+pydantic
+matplotlib
 Pillow

@@ -1,0 +1,213 @@
+{
+    "sac": {
+        "state_dim": 9,
+        "action_dim": 1,
+        "hidden_dims": [
+            64,
+            64
+        ],
+        "log_std_min": -20,
+        "log_std_max": 1,
+        "actor_lr": 5e-05,
+        "critic_lr": 5e-05,
+        "alpha_lr": 5e-05,
+        "gamma": 0.99,
+        "tau": 0.005,
+        "alpha": 0.2,
+        "auto_tune_alpha": true,
+        "use_rnn": false,
+        "rnn_type": "lstm",
+        "rnn_hidden_size": 128,
+        "rnn_num_layers": 1,
+        "use_per": false,
+        "per_alpha": 0.6,
+        "per_beta_start": 0.4,
+        "per_beta_end": 1.0,
+        "per_beta_anneal_steps": 100000,
+        "per_epsilon": 1e-05
+    },
+    "ppo": {
+        "state_dim": 9,
+        "action_dim": 1,
+        "hidden_dim": 256,
+        "log_std_min": -20,
+        "log_std_max": 1,
+        "actor_lr": 5e-06,
+        "critic_lr": 0.001,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "policy_clip": 0.05,
+        "n_epochs": 3,
+        "entropy_coef": 0.015,
+        "value_coef": 0.5,
+        "batch_size": 16,
+        "steps_per_update": 256,
+        "use_rnn": true,
+        "rnn_type": "lstm",
+        "rnn_hidden_size": 128,
+        "rnn_num_layers": 1
+    },
+    "replay_buffer": {
+        "capacity": 1000000,
+        "gamma": 0.99
+    },
+    "training": {
+        "num_episodes": 100000,
+        "max_steps": 300,
+        "sac_batch_size": 32,
+        "save_interval": 2000,
+        "log_frequency": 10,
+        "models_dir": "models/ppo/",
+        "experiment_base_dir": "experiments",
+        "learning_starts": 8000,
+        "train_freq": 30,
+        "gradient_steps": 20,
+        "normalize_rewards": true
+    },
+    "evaluation": {
+        "num_episodes": 1,
+        "max_steps": 300,
+        "render": false
+    },
+    "world": {
+        "dt": 1.0,
+        "agent_speed": 2.5,
+        "yaw_angle_range": [
+            -0.5235987755982988,
+            0.5235987755982988
+        ],
+        "world_x_bounds": [
+            -150.0,
+            150.0
+        ],
+        "world_y_bounds": [
+            -150.0,
+            150.0
+        ],
+        "landmark_depth_bounds": [
+            0.0,
+            300.0
+        ],
+        "normalize_state": true,
+        "agent_initial_location": {
+            "x": 0,
+            "y": 0,
+            "depth": 0
+        },
+        "landmark_initial_location": {
+            "x": 42.0,
+            "y": 42.0,
+            "depth": 42.0
+        },
+        "landmark_initial_velocity": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "randomize_agent_initial_location": true,
+        "randomize_landmark_initial_location": true,
+        "randomize_landmark_initial_velocity": false,
+        "agent_randomization_ranges": {
+            "x_range": [
+                -100.0,
+                100.0
+            ],
+            "y_range": [
+                -100.0,
+                100.0
+            ],
+            "depth_range": [
+                0.0,
+                0.0
+            ]
+        },
+        "landmark_randomization_ranges": {
+            "x_range": [
+                -100.0,
+                100.0
+            ],
+            "y_range": [
+                -100.0,
+                100.0
+            ],
+            "depth_range": [
+                0.0,
+                300.0
+            ]
+        },
+        "landmark_velocity_randomization_ranges": {
+            "vx_range": [
+                -0.5,
+                0.5
+            ],
+            "vy_range": [
+                -0.5,
+                0.5
+            ],
+            "vz_range": [
+                -0.1,
+                0.1
+            ]
+        },
+        "trajectory_length": 10,
+        "trajectory_feature_dim": 11,
+        "range_measurement_base_noise": 0.01,
+        "range_measurement_distance_factor": 0.001,
+        "success_threshold": 0.5,
+        "collision_threshold": 0.5,
+        "reward_error_threshold": 1.0,
+        "low_error_bonus": 1.0,
+        "high_error_penalty_factor": 0.1,
+        "uninitialized_penalty": 1.0,
+        "reward_distance_threshold": 15.0,
+        "close_distance_bonus": 1.0,
+        "distance_reward_scale": 0.0001,
+        "max_distance_for_reward": 50.0,
+        "max_observable_range": 100.0,
+        "out_of_range_penalty": 0.1,
+        "landmark_collision_penalty": 1.0,
+        "success_bonus": 30.0,
+        "new_measurement_probability": 0.75,
+        "estimator_config": {
+            "history_size": 10,
+            "min_points_required": 3,
+            "location_smoothing_factor": 0.8,
+            "position_buffer_size": 5,
+            "velocity_smoothing": 3,
+            "min_observer_movement": 0.5
+        }
+    },
+    "particle_filter": {
+        "num_particles": 1000,
+        "initial_range_stddev": 0.02,
+        "initial_velocity_guess": 0.1,
+        "max_particle_range": 250.0,
+        "process_noise_pos": 0.02,
+        "process_noise_orient": 0.2,
+        "process_noise_vel": 0.02,
+        "measurement_noise_stddev": 5.0,
+        "resampling_method": 2,
+        "pf_eval_max_mean_range_error_factor": 0.1,
+        "pf_eval_dispersion_threshold": 5.0
+    },
+    "least_squares": {
+        "history_size": 10,
+        "min_points_required": 3,
+        "location_smoothing_factor": 0.8,
+        "position_buffer_size": 5,
+        "velocity_smoothing": 3,
+        "min_observer_movement": 0.5
+    },
+    "visualization": {
+        "save_dir": "world_snapshots",
+        "figure_size": [
+            10,
+            8
+        ],
+        "max_trajectory_points": 100,
+        "gif_frame_duration": 0.2,
+        "delete_frames_after_gif": true
+    },
+    "cuda_device": "cuda:0",
+    "algorithm": "ppo"
+}
