@@ -17,8 +17,8 @@ from simulation_bundle import (
 
 from configs import DefaultConfig, ParticleFilterConfig, LeastSquaresConfig # For type checking loaded config
 
-EXPERIMENTS_DIR = "tracker/experiments"
-TEMP_VIS_DIR_BASE = "tracker/streamlit_temp_vis"
+EXPERIMENTS_DIR = "experiments"
+TEMP_VIS_DIR_BASE = "streamlit_temp_vis"
 
 # Define the base agent types for selection
 BASE_AGENT_TYPES = {
