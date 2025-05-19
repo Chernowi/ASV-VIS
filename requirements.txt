@@ -1,7 +1,7 @@
 streamlit
 pandas
 numpy
-torch==1.13.1+cpu
+torch
 pydantic
 matplotlib
 Pillow
